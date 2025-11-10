@@ -7,7 +7,7 @@ export default {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer " + OPENAI_KEY,
+        "Authorization": "Bearer " + OPENAI_KEY,k-proj-_QQP_6TinKlLq478ir2mswR300xg2R_dfviBGvFTgDZkvMb6lr7l072kXmXQPbLDKJ7xgxcstTT3BlbkFJNYyXTOAPLhHRIhKgCayJ9E09l_9iyTP4VuOaiF1O9juubtz1EsUjPquZRzFIli5ayBWJZVQQkA
       },
       body: await request.text(),
     });
