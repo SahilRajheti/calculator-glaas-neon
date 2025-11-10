@@ -14,7 +14,7 @@
    const OPENAI_KEY = ""; // <-- add key if you want OpenAI calls (see instructions in README)
 ============================================================================= */
 
-const OPENAI_KEY = ""; // leave empty to disable OpenAI calls
+const OPENAI_KEY = "k-proj-_QQP_6TinKlLq478ir2mswR300xg2R_dfviBGvFTgDZkvMb6lr7l072kXmXQPbLDKJ7xgxcstTT3BlbkFJNYyXTOAPLhHRIhKgCayJ9E09l_9iyTP4VuOaiF1O9juubtz1EsUjPquZRzFIli5ayBWJZVQQkA"; // leave empty to disable OpenAI calls
 
 // DOM
 const loader = document.getElementById('loader');
