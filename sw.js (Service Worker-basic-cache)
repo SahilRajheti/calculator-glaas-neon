@@ -1,15 +1,26 @@
+const CACHE = "neocalc-v1";
+const FILES = [
+  "/",
+  "/index.html",
+  "/style.css",
+  "/script.js",
+  "/manifest.json",
+  "/click.mp3"
+];
 
-export default {
-  async fetch(request) {
-    const url = "https://api.openai.com/v1/chat/completions";
+self.addEventListener('install', (e)=>{
+  e.waitUntil(
+    caches.open(CACHE).then(cache => cache.addAll(FILES))
+  );
+  self.skipWaiting();
+});
 
-    return await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer " + OPENAI_KEY,k-proj-_QQP_6TinKlLq478ir2mswR300xg2R_dfviBGvFTgDZkvMb6lr7l072kXmXQPbLDKJ7xgxcstTT3BlbkFJNYyXTOAPLhHRIhKgCayJ9E09l_9iyTP4VuOaiF1O9juubtz1EsUjPquZRzFIli5ayBWJZVQQkA
-      },
-      body: await request.text(),
-    });
-  }
-}
+self.addEventListener('activate', (e)=>{
+  e.waitUntil(self.clients.claim());
+});
+
+self.addEventListener('fetch', (e)=>{
+  e.respondWith(
+    caches.match(e.request).then(resp => resp || fetch(e.request))
+  );
+});
