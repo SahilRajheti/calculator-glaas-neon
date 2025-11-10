@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NeoCalc — Ultimate</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+  <meta name="theme-color" content="#0a0f0f"/>
+</head>
+<body class="theme-dark">
+
+  <!-- Loading Screen -->
+  <div id="loader" class="loader">
+    <div class="loader-inner">
+      <div class="neon-ball"></div>
+      <p>NeoCalc</p>
+    </div>
+  </div>
+
+  <div class="app" id="app" aria-hidden="true">
+    <header class="topbar">
+      <h1>NeoCalc</h1>
+      <div class="controls">
+        <button id="themeToggle" aria-label="Toggle theme">🌗</button>
+        <button id="voiceBtn" title="Voice input">🎤</button>
+        <button id="aiToggle" title="AI helper">🤖</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="calculator">
+        <div class="display">
+          <div id="historyMini" class="history-mini"></div>
+          <div id="screen" class="screen" role="textbox" aria-live="polite"></div>
+        </div>
+
+        <div class="modes">
+          <label><input type="checkbox" id="scientificToggle"> Scientific</label>
+          <label><input type="checkbox" id="soundToggle" checked> Sound</label>
+        </div>
+
+        <div class="buttons" id="buttons">
+          <!-- Row 1 -->
+          <button class="btn func" data-fn="clear">AC</button>
+          <button class="btn func" data-fn="del">DEL</button>
+          <button class="btn func" data-val="%" >%</button>
+          <button class="btn op" data-val="/">÷</button>
+
+          <!-- Row 2 -->
+          <button class="btn" data-val="7">7</button>
+          <button class="btn" data-val="8">8</button>
+          <button class="btn" data-val="9">9</button>
+          <button class="btn op" data-val="*">×</button>
+
+          <!-- Row 3 -->
+          <button class="btn" data-val="4">4</button>
+          <button class="btn" data-val="5">5</button>
+          <button class="btn" data-val="6">6</button>
+          <button class="btn op" data-val="-">−</button>
+
+          <!-- Row 4 -->
+          <button class="btn" data-val="1">1</button>
+          <button class="btn" data-val="2">2</button>
+          <button class="btn" data-val="3">3</button>
+          <button class="btn op" data-val="+">+</button>
+
+          <!-- Row 5 -->
+          <button class="btn zero" data-val="0">0</button>
+          <button class="btn" data-val=".">.</button>
+          <button class="btn equals" data-fn="equals">=</button>
+        </div>
+
+        <!-- Scientific buttons (hidden unless enabled) -->
+        <div class="scientific" id="scientificPanel" aria-hidden="true">
+          <button class="btn sci" data-val="Math.sin(">sin</button>
+          <button class="btn sci" data-val="Math.cos(">cos</button>
+          <button class="btn sci" data-val="Math.tan(">tan</button>
+          <button class="btn sci" data-val="Math.log10(">log</button>
+          <button class="btn sci" data-val="Math.sqrt(">√</button>
+          <button class="btn sci" data-val="Math.PI">π</button>
+          <button class="btn sci" data-val="Math.E">e</button>
+          <button class="btn sci" data-val="**">^</button>
+        </div>
+      </section>
+
+      <!-- Sidebar: history + AI helper -->
+      <aside class="sidebar">
+        <div class="history">
+          <h3>History</h3>
+          <ul id="historyList"></ul>
+          <button id="clearHistory" class="small">Clear History</button>
+        </div>
+
+        <div class="aiHelper" id="aiHelper" aria-hidden="true">
+          <h3>Mini AI Helper</h3>
+          <input id="aiInput" placeholder="e.g. GST 18% of 500" />
+          <div class="aiControls">
+            <button id="aiLocal">Answer (Local)</button>
+            <button id="aiOpenAI" title="Requires API key">Answer (OpenAI)</button>
+          </div>
+          <div id="aiOutput" class="aiOutput"></div>
+          <p class="small">Tip: For full AI, add your OpenAI API key in script.js (see instructions).</p>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <small>Built by Sahil • NeoCalc</small>
+      <div class="installPrompt" id="installPrompt"></div>
+    </footer>
+  </div>
+
+  <audio id="clickSound" src="click.mp3" preload="auto"></audio>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
