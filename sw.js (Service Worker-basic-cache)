@@ -1,1 +1,15 @@
 
+export default {
+  async fetch(request) {
+    const url = "https://api.openai.com/v1/chat/completions";
+
+    return await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + OPENAI_KEY,
+      },
+      body: await request.text(),
+    });
+  }
+}
